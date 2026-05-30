@@ -1,22 +1,25 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import HowItWorks from './components/HowItWorks';
-import Demo from './components/Demo';
-import TrustSection from './components/TrustSection';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import OTPVerificationPage from './pages/OTPVerificationPage';
+import ConnectWalletPage from './pages/ConnectWalletPage';
+import KYCVerificationPage from './pages/KYCVerificationPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Features />
-      <HowItWorks />
-      <Demo />
-      <TrustSection />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/verify" element={<OTPVerificationPage />} />
+        <Route path="/connect-wallet" element={<ConnectWalletPage />} />
+        <Route path="/kyc" element={<KYCVerificationPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

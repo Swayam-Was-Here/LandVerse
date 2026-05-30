@@ -62,6 +62,7 @@ export default {
       },
       fontFamily: {
         "headline": ["Space Grotesk"],
+        "display": ["Space Grotesk"],
         "body": ["Manrope"],
         "label": ["Inter"]
       },

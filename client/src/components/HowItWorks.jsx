@@ -1,6 +1,6 @@
 const HowItWorks = () => {
   return (
-    <section className="py-32 bg-surface-container-low overflow-hidden">
+    <section id="how-it-works" className="py-32 bg-surface-container-low overflow-hidden">
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
           <h2 className="font-headline text-4xl font-bold mb-4">The Digital Transformation</h2>

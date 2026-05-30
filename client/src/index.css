@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary;
   }
@@ -20,6 +23,64 @@
 
 .hero-gradient {
   background: radial-gradient(circle at 50% 50%, rgba(0, 238, 252, 0.1) 0%, rgba(12, 14, 22, 1) 70%);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(143, 245, 255, 0.3);
+}
+
+.glass-panel {
+  background: rgba(34, 37, 49, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.primary-gradient {
+  background: linear-gradient(135deg, #8ff5ff 0%, #00eefc 100%);
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(143, 245, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143, 245, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.primary-glow:hover {
+  box-shadow: 0 0 25px rgba(143, 245, 255, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+.active-role {
+  background-color: #00eefc;
+  color: #003f43;
+}
+
+.bg-mesh {
+  background-image: radial-gradient(circle at 20% 30%, rgba(143, 245, 255, 0.05) 0%, transparent 40%),
+                    radial-gradient(circle at 80% 70%, rgba(172, 137, 255, 0.05) 0%, transparent 40%);
+}
+
+.otp-input:focus {
+  box-shadow: 0 0 15px rgba(143, 245, 255, 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #8ff5ff 0%, #00eefc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.primary-gradient {
+  background: linear-gradient(135deg, #8ff5ff 0%, #00eefc 100%);
 }
 
 .text-glow {

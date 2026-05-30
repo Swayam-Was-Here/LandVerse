@@ -1,6 +1,6 @@
 const Demo = () => {
   return (
-    <section className="py-32 bg-surface">
+    <section id="demo" className="py-32 bg-surface">
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="lg:w-1/3">

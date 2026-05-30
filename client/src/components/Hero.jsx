@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 const Hero = () => {
   return (
-    <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <header id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 z-0 opacity-40">
         <div className="absolute inset-0 hero-gradient"></div>
         <img
@@ -22,12 +24,12 @@ const Hero = () => {
           Transforming physical land into trusted digital assets. Secure your future through automated, immutable blockchain architecture.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="w-full sm:w-auto px-10 py-4 rounded-lg bg-gradient-to-br from-primary to-primary-container text-on-primary-container font-headline font-bold uppercase tracking-widest text-sm hover:translate-y-[-2px] transition-all shadow-lg shadow-primary/10">
+          <Link to="/register" className="w-full sm:w-auto px-10 py-4 rounded-lg bg-gradient-to-br from-primary to-primary-container text-on-primary-container font-headline font-bold uppercase tracking-widest text-sm hover:translate-y-[-2px] transition-all shadow-lg shadow-primary/10">
             Explore Platform
-          </button>
-          <button className="w-full sm:w-auto px-10 py-4 rounded-lg bg-transparent text-secondary border border-outline-variant/20 font-headline font-bold uppercase tracking-widest text-sm hover:bg-surface-container-high transition-all">
+          </Link>
+          <a href="#demo" className="w-full sm:w-auto px-10 py-4 rounded-lg bg-transparent text-secondary border border-outline-variant/20 font-headline font-bold uppercase tracking-widest text-sm hover:bg-surface-container-high transition-all text-center">
             View Demo
-          </button>
+          </a>
         </div>
       </div>
       {/* Scroll Indicator */}
