@@ -99,3 +99,20 @@
 .text-glow {
   text-shadow: 0 0 20px rgba(143, 245, 255, 0.3);
 }
+
+.glow-button {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(143, 245, 255, 0.2);
+}
+.glow-button:hover {
+  box-shadow: 0 0 30px rgba(143, 245, 255, 0.5);
+  transform: translateY(-1px);
+}
+.pulse-contract {
+  animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse-border {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+

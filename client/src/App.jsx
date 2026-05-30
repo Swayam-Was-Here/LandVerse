@@ -8,6 +8,7 @@ import KYCVerificationPage from './pages/KYCVerificationPage';
 import DashboardPage from './pages/DashboardPage';
 import PaymentConfirmationPage from './pages/PaymentConfirmationPage';
 import OwnershipTransferSuccessPage from './pages/OwnershipTransferSuccessPage';
+import LandRegistrationPage from './pages/LandRegistrationPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/payment" element={<PaymentConfirmationPage />} />
         <Route path="/transfer-success" element={<OwnershipTransferSuccessPage />} />
+        <Route path="/land-registration" element={<LandRegistrationPage />} />
       </Routes>
     </BrowserRouter>
   );
