@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 // ─────────────────────────────────────────────
 // Mock IPFS upload – replace with real Pinata /
@@ -61,18 +60,32 @@ const FileZone = ({ id, label, file, onFile, accept = 'image/*,.pdf' }) => (
 
 // ─── Live Selfie Widget ───────────────────────
 const SelfieWidget = ({ onCapture }) => {
+  const streamRef = useRef(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [stage, setStage] = useState('idle'); // idle | camera | verifying | done
   const [captured, setCaptured] = useState(null);
 
+  // Attach stream once the <video> element is in the DOM (after stage = 'camera')
+  useEffect(() => {
+    if (stage === 'camera' && streamRef.current && videoRef.current) {
+      videoRef.current.srcObject = streamRef.current;
+    }
+  }, [stage]);
+
   const start = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
-      videoRef.current.srcObject = stream;
-      setStage('camera');
-    } catch {
-      alert('Camera access denied. Please allow camera permissions.');
+      streamRef.current = stream;   // save stream before stage change
+      setStage('camera');           // now React renders <video>, useEffect attaches stream
+    } catch (err) {
+      console.error('Camera error:', err);
+      const msg = err?.name === 'NotAllowedError'
+        ? 'Camera permission denied. Please allow camera access in your browser settings.'
+        : err?.name === 'NotReadableError'
+        ? 'Camera is already in use by another application.'
+        : `Camera error: ${err?.message || 'Unknown error'}`;
+      alert(msg);
     }
   };
 
@@ -278,11 +291,11 @@ const RegisterPage = () => {
       </header>
 
       <main className="flex-grow flex items-center justify-center pt-24 pb-12 px-4 relative overflow-hidden">
-        {/* Decorative Ambient Element */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-float-slow"></div>
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-float"></div>
+        {/* Decorative Ambient Elements */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-float-slow" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-float" />
         <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
-        
+
         <section className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-8 glass-card glass-card-interactive rounded-lg overflow-hidden relative z-10 shadow-2xl hover-glow-border">
           {/* Left panel */}
           <div className="hidden lg:flex flex-col justify-between p-12 bg-surface-container-low relative overflow-hidden">
